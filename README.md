@@ -1,7 +1,10 @@
 # Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+### AIM: 
+To implement 4 bit up and down counters and validate  functionality.
+### HARDWARE REQUIRED:  
+– PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED:   
+Quartus prime
 ### THEORY 
 
 ## UP COUNTER 
@@ -46,43 +49,70 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+1.Set the input as clock.
 
+2.Register the output of 4 bit.
 
+3.Use Posedge on the input clock.
+
+4.For Up counter use AND and OR gates to declare the value of each bit.
+
+5.For Down counter use AND, OR and NOT gates to declare the value of each bit.
+
+6.End the module.
 
 ### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-
-
-
-
-
+##### Developed by: JAISON RAPHAEL V
+##### RegisterNumber: 212221230038 
+#### UP COUNTER:
+```
+module up(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
+```
+#### DOWN COUNTER:
+```
+module down(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
+```
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
-
-
-
-
-
-
+#### UP COUNTER
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/c9f66aaf-7826-40a2-ab6f-10ca37cebd7d)
+#### DOWN COUNTER 
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/7c17453b-837b-4693-9169-15e158f11404)
 
 ### TIMING DIGRAMS FOR COUNTER  
+#### UP COUNTER
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/43b224cf-8b28-4ba7-b143-ecac3a406d74)
 
-
-
-
+#### DOWN COUNTER
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/cba2f2e6-446a-4b81-9617-6f7a0529a6c7)
 
 ### TRUTH TABLE 
+#### UP COUNTER
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/c4417017-ce15-4e1e-9055-7b38f33c8cb8)
 
-
-
-
-
+#### DOWN COUNTER
+![image](https://github.com/JaisonRaphael/Exp-7-Synchornous-counters-/assets/94165957/f20142f8-b195-40a2-acd2-8bd33db7a660)
 
 ### RESULTS 
+Thus the program has been executed successfully.
